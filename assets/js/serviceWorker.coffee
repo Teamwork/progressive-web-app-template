@@ -42,10 +42,10 @@ self.addEventListener 'install', (e) ->
 ##
 self.addEventListener 'push', (event) ->
 
-    title = 'Update From Teamwork.com'
+    title = 'Hey'
     event.waitUntil self.registration.showNotification(title,
         body: 'Click to read the latest update'
-        icon: './assets/images/favicons/196.png'
+        icon: './assets/images/196.png'
         tag: 'new-article')
     return
 
@@ -99,9 +99,6 @@ self.addEventListener 'notificationclick', (event) ->
 # @return {} none
 ##
 self.addEventListener 'fetch', (event) ->
-
-    return
-
     event.respondWith fetch(event.request).catch(->
         caches.match event.request
     )
