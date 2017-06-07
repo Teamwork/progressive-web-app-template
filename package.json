@@ -1,0 +1,29 @@
+{
+  "name": "progressive-web-app-template",
+  "version": "1.0.0",
+  "description": "A starting point to get you started with creating or converting your existing website/webapp into a Progressive Web App. Includes a service worker template.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teamwork/progressive-web-app-template.git"
+  },
+  "dependencies": {
+    "coffee-script": "^1.12.6",
+    "gulp": "^3.9.1",
+    "gulp-coffee": "^2.3.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-logger": "0.0.2",
+    "gulp-pug": "^3.3.0"
+  },
+  "devDependencies": {},
+  "author": "Robert James Gabriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Teamwork/progressive-web-app-template/issues"
+  },
+  "homepage": "https://github.com/Teamwork/progressive-web-app-template#readme"
+}

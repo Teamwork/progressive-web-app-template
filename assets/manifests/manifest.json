@@ -1,0 +1,53 @@
+{
+  "short_name": "PWA Template",
+  "name": "Teamwork.com - PWA Template",
+  "background_color": "#fafafa",
+  "theme_color": "#65d656",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "./",
+  "gcm_user_visible_only": true,
+  "gcm_sender_id": "xxxxxxx",
+  "applicationServerKey":"xxxxxxx",
+  "icons": [
+    {
+      "src": "assets/images/favicons/16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "assets/images/favicons/32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "assets/images/favicons/144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "assets/images/favicons/152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "assets/images/favicons/196.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    },
+    {
+      "src": "assets/images/favicons/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "https://walle.teamworkops.com/#login",
+  "description": "A starting point to get you started with creating or converting your existing website/webapp into a Progressive Web App. Includes a service worker template.",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+    "platform": "play",
+    "id": "xxxx"
+    }
+  ]
+}
