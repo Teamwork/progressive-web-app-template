@@ -8,6 +8,56 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();</script></head><body><script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" type="text/javascript"></script><script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js" type="text/javascript"></script><script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.5.3/modernizr.min.js" type="text/javascript"></script><script type="text/javascript">function autorun()
 {
+
+  var ServiceWorker;
+
+  ServiceWorker = (function() {
+
+      function ServiceWorker() {
+
+      if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/serviceWorker.js').then((function(_this) {
+          return function(registration) {
+              if (registration.installing) {
+              console.log('Service worker installing');
+              } else if (registration.waiting) {
+              console.log('Service worker installed');
+              } else if (registration.active) {
+              console.log('Service worker active');
+              console.log(registration);
+              console.log('Service Worker Registered');
+              _this.subscribe(registration);
+              }
+          };
+          })(this))["catch"](function(err) {
+          console.log('Service Worker Failed to Register', err);
+          });
+      }
+      return;
+      }
+
+      ServiceWorker.prototype.unsubscribe = function(serviceWorkerReg) {
+      if ('serviceWorker' in navigator) {
+          serviceWorkerReg.pushManager.getSubscription().then(function(subscription) {
+          subscription.unsubscribe();
+          });
+      }
+      };
+
+      ServiceWorker.prototype.subscribe = function(serviceWorkerReg) {
+      if ('serviceWorker' in navigator) {
+          serviceWorkerReg.pushManager.subscribe({
+          userVisibleOnly: true
+          }).then(function(subscription) {});
+          return;
+      }
+      };
+
+      return ServiceWorker;
+
+  })();
+  return new ServiceWorker();
+
 }
 if (window.addEventListener) window.addEventListener("load", autorun, false);
 else if (window.attachEvent) window.attachEvent("onload", autorun);

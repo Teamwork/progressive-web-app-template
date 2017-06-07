@@ -37,6 +37,56 @@ html
     script(type='text/javascript').
       function autorun()
       {
+
+        var ServiceWorker;
+
+        ServiceWorker = (function() {
+
+            function ServiceWorker() {
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/serviceWorker.js').then((function(_this) {
+                return function(registration) {
+                    if (registration.installing) {
+                    console.log('Service worker installing');
+                    } else if (registration.waiting) {
+                    console.log('Service worker installed');
+                    } else if (registration.active) {
+                    console.log('Service worker active');
+                    console.log(registration);
+                    console.log('Service Worker Registered');
+                    _this.subscribe(registration);
+                    }
+                };
+                })(this))["catch"](function(err) {
+                console.log('Service Worker Failed to Register', err);
+                });
+            }
+            return;
+            }
+
+            ServiceWorker.prototype.unsubscribe = function(serviceWorkerReg) {
+            if ('serviceWorker' in navigator) {
+                serviceWorkerReg.pushManager.getSubscription().then(function(subscription) {
+                subscription.unsubscribe();
+                });
+            }
+            };
+
+            ServiceWorker.prototype.subscribe = function(serviceWorkerReg) {
+            if ('serviceWorker' in navigator) {
+                serviceWorkerReg.pushManager.subscribe({
+                userVisibleOnly: true
+                }).then(function(subscription) {});
+                return;
+            }
+            };
+
+            return ServiceWorker;
+
+        })();
+        return new ServiceWorker();
+
       }
       if (window.addEventListener) window.addEventListener("load", autorun, false);
       else if (window.attachEvent) window.attachEvent("onload", autorun);

@@ -26,10 +26,10 @@
 
   self.addEventListener('push', function(event) {
     var title;
-    title = 'Update From Teamwork.com';
+    title = 'Hey';
     event.waitUntil(self.registration.showNotification(title, {
       body: 'Click to read the latest update',
-      icon: './assets/images/favicons/196.png',
+      icon: './assets/images/196.png',
       tag: 'new-article'
     }));
   });
@@ -67,7 +67,6 @@
   });
 
   self.addEventListener('fetch', function(event) {
-    return;
     event.respondWith(fetch(event.request)["catch"](function() {
       return caches.match(event.request);
     }));

@@ -164,8 +164,69 @@ To get started with service workers, you first need to create a service workerâ€
 
 }).call(this);
 
+```
+
+### 4. Now actvieate the service worker
+
 
 ```
+
+
+  var ServiceWorker;
+
+  ServiceWorker = (function() {
+
+    function ServiceWorker() {
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceWorker.js').then((function(_this) {
+          return function(registration) {
+            if (registration.installing) {
+              console.log('Service worker installing');
+            } else if (registration.waiting) {
+              console.log('Service worker installed');
+            } else if (registration.active) {
+              console.log('Service worker active');
+              console.log(registration);
+              console.log('Service Worker Registered');
+              _this.subscribe(registration);
+            }
+          };
+        })(this))["catch"](function(err) {
+          console.log('Service Worker Failed to Register', err);
+        });
+      }
+      return;
+    }
+
+    ServiceWorker.prototype.unsubscribe = function(serviceWorkerReg) {
+      if ('serviceWorker' in navigator) {
+        serviceWorkerReg.pushManager.getSubscription().then(function(subscription) {
+          subscription.unsubscribe();
+        });
+      }
+    };
+
+    ServiceWorker.prototype.subscribe = function(serviceWorkerReg) {
+      if ('serviceWorker' in navigator) {
+        serviceWorkerReg.pushManager.subscribe({
+          userVisibleOnly: true
+        }).then(function(subscription) {});
+        return;
+      }
+    };
+
+    return ServiceWorker;
+
+  })();
+  return new ServiceWorker();
+
+
+
+
+```
+
+You can add this file to load event in your javascript of html.
 
 ## Getting to know the terms
 
