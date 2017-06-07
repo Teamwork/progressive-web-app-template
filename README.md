@@ -228,6 +228,30 @@ To get started with service workers, you first need to create a service workerâ€
 
 You can add this file to load event in your javascript of html.
 
+
+### 5. Now reload
+
+You could see in the network tab. The Service worker is taking care of loading of the assets.
+
+
+## Lighthouse
+Lighthouse is an open-source, automated tool for improving the performance, quality, and correctness of your web apps. 
+
+When auditing a page, Lighthouse runs a barrage of tests against the page, and then generates a report on how well the page did. From here you can use the failing tests as indicators on what you can do to improve your app. 
+
+### Installl plugin
+
+```
+npm install -g GoogleChrome/lighthouse
+```
+
+### Run the audit
+
+```
+npm explore -g lighthouse -- npm run chrome
+lighthouse https://github.com/Teamwork/progressive-web-app-template
+```
+
 ## Getting to know the terms
 
 ### Web App Manifest
