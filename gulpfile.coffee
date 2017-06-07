@@ -32,7 +32,7 @@ gulp.task 'app_js', ->
 ##
 gulp.task 'app_images', ->
 
-    gulp.src('./assets/img/**/*')
+    gulp.src('./assets/images/**/*')
     .pipe imagemin()
     .pipe logger(
         before: 'Compressing Images'
