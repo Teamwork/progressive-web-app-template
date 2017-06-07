@@ -166,7 +166,9 @@ To get started with service workers, you first need to create a service workerâ€
 
 ```
 
-### 4. Now actvieate the service worker
+### 4. Now register the service worker
+
+You can add this file to load event in your javascript of html.
 
 
 ```
@@ -226,7 +228,6 @@ To get started with service workers, you first need to create a service workerâ€
 
 ```
 
-You can add this file to load event in your javascript of html.
 
 
 ### 5. Now reload
