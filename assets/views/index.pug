@@ -45,7 +45,7 @@ html
             function ServiceWorker() {
 
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/serviceWorker.js').then((function(_this) {
+                navigator.serviceWorker.register('./serviceWorker.js').then((function(_this) {
                 return function(registration) {
                     if (registration.installing) {
                     console.log('Service worker installing');
