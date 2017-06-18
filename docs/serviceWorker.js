@@ -14,11 +14,11 @@
 (function() {
   var cacheFiles, cacheName, offlineUrl;
 
-  cacheName = 'v1.25';
+  cacheName = 'v1.26';
 
   offlineUrl = 'offline.html';
 
-  cacheFiles = ['assets/css/styles-sass.min.css'];
+  cacheFiles = [];
 
   self.addEventListener('install', function(e) {
     e.waitUntil(caches.open(cacheName).then(function(cache) {

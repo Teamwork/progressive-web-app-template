@@ -13,14 +13,13 @@
 # Set a name for the current cache
 
 
-cacheName = 'v1.25'
+cacheName = 'v1.26'
 
 offlineUrl = 'offline.html';
 
 
 # Default files to always cache
 cacheFiles = [
-    'assets/css/styles-sass.min.css'
 ]
 
 
