@@ -6,9 +6,6 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "./",
-  "gcm_user_visible_only": true,
-  "gcm_sender_id": "xxxxxxx",
-  "applicationServerKey":"xxxxxxx",
   "icons": [
     {
       "src": "assets/images/16.png",
