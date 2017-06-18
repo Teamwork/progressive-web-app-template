@@ -14,7 +14,7 @@
 (function() {
   var cacheFiles, cacheName, offlineUrl;
 
-  cacheName = 'v1.26';
+  cacheName = 'v1.29';
 
   offlineUrl = 'offline.html';
 
@@ -71,9 +71,9 @@
   self.addEventListener('fetch', function(event) {
     console.log(event);
     if (event.request.mode === 'navigate' || event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html')) {
-      event.respondWith(fetch(event.request.url)["catch"](error(function() {
+      event.respondWith(fetch(event.request.url)["catch"](function() {
         return caches.match(offlineUrl);
-      })));
+      }));
     } else {
       event.respondWith(fetch(event.request)["catch"](function() {
         console.log(event.request);

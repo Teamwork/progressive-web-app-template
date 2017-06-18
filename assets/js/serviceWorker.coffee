@@ -13,7 +13,7 @@
 # Set a name for the current cache
 
 
-cacheName = 'v1.26'
+cacheName = 'v1.29'
 
 offlineUrl = 'offline.html';
 
@@ -108,7 +108,7 @@ self.addEventListener 'fetch', (event) ->
     # request.mode = navigate isn't supported in all browsers
     # so include a check for Accept: text/html header.
     if event.request.mode == 'navigate' or event.request.method == 'GET' and event.request.headers.get('accept').includes('text/html')
-        event.respondWith fetch(event.request.url).catch(error ->
+        event.respondWith fetch(event.request.url).catch( ->
             return caches.match(offlineUrl)
         )
     else
