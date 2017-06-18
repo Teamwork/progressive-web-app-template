@@ -30,6 +30,13 @@ html
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+    style.
+        .footer-logo{
+            padding:2rem;
+            margin-left:auto;
+            margin-right:auto;
+            width:100px;
+        }
   body
     a(href='https://github.com/Teamwork/progressive-web-app-template')
         img(style='position: absolute; top: 0; right: 0; border: 0;', src='https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67', alt='Fork me on GitHub', data-canonical-src='https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png')
@@ -38,6 +45,10 @@ html
             .col-md-2
             .col-md-8
                 img(src="./assets/img/logo.png",width="100%")
+            .col-md-2
+        .row
+            .col-md-3
+            .col-md-6
 
                 .bs-component(style="margin-top: 65px;")
                     .panel.panel-default
@@ -49,8 +60,8 @@ html
                         .panel-heading 1. Create a mainfest.json file
                         .panel-body
                             p
-                                | A full example of all this is seen
-                                a(herf='https://github.com/Teamwork/progressive-web-app-template', alt='') here
+                                | A full example of all this is seen 
+                                a(href='https://github.com/Teamwork/progressive-web-app-template', alt='') here
                             p
                                 | Remember the mainfest.json and serverworker.js need to be at the root.
 
@@ -65,22 +76,28 @@ html
                         .panel-body
                             p
                                 | To get started with service workers, you first need to create a service worker’s JavaScript file. Will be placed in the root. 
-                                | You can see one
-                                a(herf='https://github.com/Teamwork/progressive-web-app-template', alt='') here
+                                | You can see one 
+                                a(href='https://github.com/Teamwork/progressive-web-app-template', alt='') here
                     .panel.panel-default
                         .panel-heading 4. Now register the service worker
                         .panel-body
                             p
                                 | You can add this file to load event in your javascript of html.
-                                | You can see one
-                                a(herf='https://github.com/Teamwork/progressive-web-app-template', alt='') here
+                                | You can see one 
+                                a(href='https://github.com/Teamwork/progressive-web-app-template', alt='') here
                     .panel.panel-default
                         .panel-heading 5. Now reload
                         .panel-body
                             | You could see in the network tab. The Service worker is taking care of loading of the assets.
                             | Pssss also it works offline. Disable the wifi and refresh
 
+            .col-md-3
+    .container
+        .row
+            .col-md-5
             .col-md-2
+                img(src="./assets/img/teamwork.svg",width="100px",class="footer-logo")
+            .col-md-5
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', type='text/javascript')
     script(src='//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js', type='text/javascript')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js', type='text/javascript')
