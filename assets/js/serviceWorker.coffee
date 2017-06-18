@@ -10,28 +10,35 @@
    Y888P  Y88P""Y8P"     Handcrafted with ♥ in Cork, Ireland.. ps, we are fans of the Konami code.
 
 ###
+# Set a name for the current cache
+
+
+cacheName = 'v1.25'
+
+offlineUrl = 'offline.html';
 
 
 # Default files to always cache
 cacheFiles = [
-
-    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
-    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+    'assets/css/styles-sass.min.css'
 ]
-
-cacheName = 'v1.00' # Caching number for the service Worker
 
 
 ##
 # Function for the installing of the serivce worker
-# @param {event} e
-# @return {none} none
+# @param { event } e
+# @return {} none
 ##
 self.addEventListener 'install', (e) ->
+    # e.waitUntil Delays the event until the Promise is resolved
     e.waitUntil caches.open(cacheName).then((cache) ->
         # Add all the default files to the cache
-        cache.addAll cacheFiles
+        cache.addAll [
+            cacheFiles
+            offlineUrl
+        ]
     )
+    # end e.waitUntil
     return
 
 
@@ -93,13 +100,21 @@ self.addEventListener 'notificationclick', (event) ->
 
 
 ##
-# Function for fetching
-# Scripts, css, images and asset
+# Function for the fetch the scripts click
 # @param { event } e
 # @return {} none
 ##
 self.addEventListener 'fetch', (event) ->
-    event.respondWith fetch(event.request).catch(->
-        caches.match event.request
-    )
+    console.log event
+    # request.mode = navigate isn't supported in all browsers
+    # so include a check for Accept: text/html header.
+    if event.request.mode == 'navigate' or event.request.method == 'GET' and event.request.headers.get('accept').includes('text/html')
+        event.respondWith fetch(event.request.url).catch(error ->
+            return caches.match(offlineUrl)
+        )
+    else
+        event.respondWith fetch(event.request).catch(->
+            console.log event.request
+            caches.match event.request
+        )
     return

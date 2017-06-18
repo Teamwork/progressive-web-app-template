@@ -12,15 +12,17 @@
  */
 
 (function() {
-  var cacheFiles, cacheName;
+  var cacheFiles, cacheName, offlineUrl;
 
-  cacheFiles = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'];
+  cacheName = 'v1.25';
 
-  cacheName = 'v1.00';
+  offlineUrl = 'offline.html';
+
+  cacheFiles = ['assets/css/styles-sass.min.css'];
 
   self.addEventListener('install', function(e) {
     e.waitUntil(caches.open(cacheName).then(function(cache) {
-      return cache.addAll(cacheFiles);
+      return cache.addAll([cacheFiles, offlineUrl]);
     }));
   });
 
@@ -67,9 +69,17 @@
   });
 
   self.addEventListener('fetch', function(event) {
-    event.respondWith(fetch(event.request)["catch"](function() {
-      return caches.match(event.request);
-    }));
+    console.log(event);
+    if (event.request.mode === 'navigate' || event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html')) {
+      event.respondWith(fetch(event.request.url)["catch"](error(function() {
+        return caches.match(offlineUrl);
+      })));
+    } else {
+      event.respondWith(fetch(event.request)["catch"](function() {
+        console.log(event.request);
+        return caches.match(event.request);
+      }));
+    }
   });
 
 }).call(this);
